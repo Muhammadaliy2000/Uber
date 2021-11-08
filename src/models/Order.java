@@ -1,12 +1,11 @@
 package models;
 
 public class Order {
-
     private User user;
     private Driver driver;
     private OrderStatus status;
-    private String addressFrom;
-    private String addressTo;
+    private String addressFrom;//finalX
+    private String addressTo;// finalY
 
     public Order(User user, Driver driver, OrderStatus status, String addressFrom, String addressTo) {
         this.user = user;

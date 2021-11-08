@@ -1,12 +1,13 @@
 package models;
 
 public abstract class BaseModel {
-
     private String name;
     private String username;
     private String password;
     private Boolean isActive;
     private Type type;
+    private double locX;
+    private double locY;
 
     public BaseModel(String name, String username, String password, Boolean isActive, Type type) {
         this.name = name;

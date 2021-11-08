@@ -1,7 +1,6 @@
 package models;
 
 public class User extends BaseModel implements Comparable<User>{
-
     private String phoneNumber;
 
     public User(String name, String username, String password, Boolean isActive, Type type, String phoneNumber) {

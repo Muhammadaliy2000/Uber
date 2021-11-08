@@ -1,7 +1,6 @@
 package models;
 
 public class Driver extends BaseModel{
-
     private String carNumber;
     private Boolean isFree;
 
