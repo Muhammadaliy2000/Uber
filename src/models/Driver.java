@@ -3,14 +3,15 @@ package models;
 public class Driver extends BaseModel{
     private String carNumber;
     private Boolean isFree;
-
-    public Driver(String name, String username, String password, Boolean isActive, Type type, String carNumber, Boolean isFree) {
-        super(name, username, password, isActive, type);
-        this.carNumber = carNumber;
-        this.isFree = isFree;
+    public Driver() {
+        this.isFree = true;
+        super.setActive(true);
     }
 
-    public Driver() {
+    public Driver(String name, String username, String password, String phoneNumber, Boolean isActive, Type type, double locX, double locY, String carNumber, Boolean isFree) {
+        super(name, username, password, phoneNumber, isActive, type, locX, locY);
+        this.carNumber = carNumber;
+        this.isFree = isFree;
     }
 
     public String getCarNumber() {
@@ -21,11 +22,11 @@ public class Driver extends BaseModel{
         this.carNumber = carNumber;
     }
 
-    public Boolean getStatus() {
+    public Boolean isFree() {
         return isFree;
     }
 
-    public void setStatus(Boolean isFree) {
-        this.isFree = isFree;
+    public void setFree(Boolean free) {
+        isFree = free;
     }
 }

@@ -4,18 +4,20 @@ public class Order {
     private User user;
     private Driver driver;
     private OrderStatus status;
-    private String addressFrom;//finalX
-    private String addressTo;// finalY
+//    private String addressFrom;
+//    private String addressTo;
+    private double finalX;
+    private double finalY;
 
-    public Order(User user, Driver driver, OrderStatus status, String addressFrom, String addressTo) {
+    public Order() {
+    }
+
+    public Order(User user, Driver driver, OrderStatus status, double finalX, double finalY) {
         this.user = user;
         this.driver = driver;
         this.status = status;
-        this.addressFrom = addressFrom;
-        this.addressTo = addressTo;
-    }
-
-    public Order() {
+        this.finalX = finalX;
+        this.finalY = finalY;
     }
 
     public User getUser() {
@@ -42,19 +44,19 @@ public class Order {
         this.status = status;
     }
 
-    public String getAddressFrom() {
-        return addressFrom;
+    public double getFinalX() {
+        return finalX;
     }
 
-    public void setAddressFrom(String addressFrom) {
-        this.addressFrom = addressFrom;
+    public void setFinalX(double finalX) {
+        this.finalX = finalX;
     }
 
-    public String getAddressTo() {
-        return addressTo;
+    public double getFinalY() {
+        return finalY;
     }
 
-    public void setAddressTo(String addressTo) {
-        this.addressTo = addressTo;
+    public void setFinalY(double finalY) {
+        this.finalY = finalY;
     }
 }

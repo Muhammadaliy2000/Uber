@@ -1,20 +1,36 @@
 package models;
 
+import java.util.UUID;
+
 public abstract class BaseModel {
+    private UUID id;
     private String name;
     private String username;
     private String password;
+    private String phoneNumber;
     private Boolean isActive;
     private Type type;
     private double locX;
     private double locY;
 
-    public BaseModel(String name, String username, String password, Boolean isActive, Type type) {
+    public BaseModel() {
+        this.id = UUID.randomUUID();
+    }
+
+    public BaseModel(String name, String username, String password, String phoneNumber, Boolean isActive, Type type, double locX, double locY) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.username = username;
         this.password = password;
+        this.phoneNumber = phoneNumber;
         this.isActive = isActive;
         this.type = type;
+        this.locX = locX;
+        this.locY = locY;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public Type getType() {
@@ -23,9 +39,6 @@ public abstract class BaseModel {
 
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public BaseModel() {
     }
 
     public String getName() {
@@ -52,11 +65,35 @@ public abstract class BaseModel {
         this.password = password;
     }
 
-    public Boolean getActive() {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Boolean isActive() {
         return isActive;
     }
 
     public void setActive(Boolean active) {
         isActive = active;
+    }
+
+    public double getLocX() {
+        return locX;
+    }
+
+    public void setLocX(double locX) {
+        this.locX = locX;
+    }
+
+    public double getLocY() {
+        return locY;
+    }
+
+    public void setLocY(double locY) {
+        this.locY = locY;
     }
 }

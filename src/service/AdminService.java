@@ -1,9 +1,11 @@
 package service;
 
-public interface AdminService {
-    void getNewOrderList();// -
-    void addDriver();
-    void deleteDriver();
+import java.util.List;
+
+public interface AdminService<T, R> {
+    Object addDriver(T t);
+    Object deleteDriver(String s);
     void getAllOrders();
-    void getOrderList(); // -
+    //void getOrderList();
+    //void getNewOrderList();
 }

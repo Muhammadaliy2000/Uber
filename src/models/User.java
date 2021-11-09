@@ -1,22 +1,11 @@
 package models;
 
 public class User extends BaseModel implements Comparable<User>{
-    private String phoneNumber;
-
-    public User(String name, String username, String password, Boolean isActive, Type type, String phoneNumber) {
-        super(name, username, password, isActive, type);
-        this.phoneNumber = phoneNumber;
-    }
-
     public User() {
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public User(String name, String username, String password, String phoneNumber, Boolean isActive, Type type, double locX, double locY) {
+        super(name, username, password, phoneNumber, isActive, type, locX, locY);
     }
 
     @Override
