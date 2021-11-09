@@ -32,7 +32,7 @@ public class AdminImpl implements AdminService{
 
     @Override
     public void getOrderList() {
-
+        def main
     }
 
 }
