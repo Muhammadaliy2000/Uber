@@ -9,6 +9,7 @@ public final class Responce implements ResponseStatus{
 //        message = message;
 //        ok = ok;
 //        data = data;
+
 //    }
 
     public Responce(boolean ok, Object data) {
