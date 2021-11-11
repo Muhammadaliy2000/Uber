@@ -1,7 +1,7 @@
 package service.order;
 
 import models.order.Order;
-import service.responce.Responce;
+import models.responce.Responce;
 
 import java.util.UUID;
 

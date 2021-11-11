@@ -1,4 +1,4 @@
-package service.responce;
+package models.responce;
 
 public class Responce<T> implements ResponseStatus<T> {
     public String message;

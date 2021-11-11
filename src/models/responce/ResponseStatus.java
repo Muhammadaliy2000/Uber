@@ -1,4 +1,4 @@
-package service.responce;
+package models.responce;
 
 public interface ResponseStatus<T>{
     static final String resSucces = "THE OPERATION WAS SUCCESSFUL!";

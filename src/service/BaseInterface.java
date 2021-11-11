@@ -1,6 +1,6 @@
 package service;
 
-import service.responce.Responce;
+import models.responce.Responce;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,11 +1,8 @@
 package service.user;
 
-import models.BaseModel;
-import models.driver.Driver;
-import models.order.Order;
 import models.user.User;
 import service.BaseInterface;
-import service.responce.Responce;
+import models.responce.Responce;
 
 import java.util.ArrayList;
 import java.util.List;

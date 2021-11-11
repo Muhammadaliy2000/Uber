@@ -1,11 +1,10 @@
 package service.driver;
 
-import models.BaseModel;
 import models.driver.Driver;
 import models.order.OrderStatus;
 import service.BaseInterface;
 import service.order.OrderService;
-import service.responce.Responce;
+import models.responce.Responce;
 
 import java.util.ArrayList;
 import java.util.List;
