@@ -1,22 +1,21 @@
-package service;
+package service.responce;
 
-public final class Responce implements ResponseStatus{
+public class Responce<T> implements ResponseStatus<T> {
     public String message;
     public boolean ok;
-    public Object data;
+    public T data;
 
 //    public static Responce setResponce(String message, boolean ok, Object data) {
 //        message = message;
 //        ok = ok;
 //        data = data;
-
 //    }
 
-    public Responce(boolean ok, Object data) {
+    public Responce(boolean ok, T data) {
         if(ok) {
-            this.message = resSucces;
+            this.message = ResponseStatus.resSucces;
         } else {
-            this.message = resFailed;
+            this.message = ResponseStatus.resFailed;
         }
         this.ok = ok;
         this.data = data;
@@ -38,11 +37,11 @@ public final class Responce implements ResponseStatus{
         this.ok = ok;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

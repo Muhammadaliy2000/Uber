@@ -1,6 +1,9 @@
 package service;
 
 import models.*;
+import models.driver.Driver;
+import models.order.Order;
+import models.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ public class SignUpImpl implements SingUpService{
     private List<Order> orderList = new ArrayList();
 
     public SignUpImpl() {
-        list.add(new User("admin", "admin", "123", "", true, Type.ADMIN, 0, 0));
+        list.add(new User("admin", "admin", "123", "", 0, 0));
     }
 
     @Override
@@ -38,16 +41,16 @@ public class SignUpImpl implements SingUpService{
         System.out.println("phone number: ");
         String phone_number = sc.next();
         System.out.println("enter own location X: ");
-        double locX = sc.nextInt();
+        int locX = sc.nextInt();
         System.out.println("enter own location Y: ");
-        double locY = sc.nextInt();
+        int locY = sc.nextInt();
         if (type == 1) {
-            User user = new User(name, username, password, phone_number, true, Type.USER, locX, locY);
+            User user = new User(name, username, password, phone_number,  locX, locY);
             list.add(user);
         } else  {
             System.out.println("car number: ");
             String car_number = sc.next();
-            Driver driver = new Driver(name, username, password, phone_number, true, Type.DRIVER, Math.random() *  90 + 10, Math.random() *  90 + 10, car_number, true);
+            Driver driver = new Driver(name, username, password, phone_number, (int)Math.random() *  90 + 10, (int)Math.random() *  90 + 10, car_number);
             list.add(driver);
         }
     }

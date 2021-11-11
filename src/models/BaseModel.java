@@ -3,42 +3,42 @@ package models;
 import java.util.UUID;
 
 public abstract class BaseModel {
-    private UUID id;
-    private String name;
-    private String username;
-    private String password;
-    private String phoneNumber;
-    private Boolean isActive;
-    private Type type;
-    private double locX;
-    private double locY;
+    protected UUID id;
+    protected String name;
+    protected String username;
+    protected String password;
+    protected String phoneNumber;
+    protected Boolean isActive;
+    protected int locX;
+    protected int locY;
+    protected char symbol;
 
     public BaseModel() {
         this.id = UUID.randomUUID();
     }
 
-    public BaseModel(String name, String username, String password, String phoneNumber, Boolean isActive, Type type, double locX, double locY) {
+    public BaseModel(String name, String username, String password, String phoneNumber, int locX, int locY,char symbol) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.isActive = isActive;
-        this.type = type;
+        this.isActive = true;
         this.locX = locX;
         this.locY = locY;
+        this.symbol  = symbol;
     }
 
     public UUID getId() {
         return id;
     }
 
-    public Type getType() {
-        return type;
+    public char getSymbol() {
+        return symbol;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setSymbol(char symbol) {
+        this.symbol = symbol;
     }
 
     public String getName() {
@@ -81,19 +81,19 @@ public abstract class BaseModel {
         isActive = active;
     }
 
-    public double getLocX() {
+    public int getLocX() {
         return locX;
     }
 
-    public void setLocX(double locX) {
+    public void setLocX(int locX) {
         this.locX = locX;
     }
 
-    public double getLocY() {
+    public int getLocY() {
         return locY;
     }
 
-    public void setLocY(double locY) {
+    public void setLocY(int locY) {
         this.locY = locY;
     }
 }
