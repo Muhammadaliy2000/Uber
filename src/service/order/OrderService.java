@@ -46,4 +46,27 @@ public class OrderService implements OrderInterface{
 
         return new Responce(false, null);
     }
+
+    @Override
+    public Order getOrder(UUID id) {
+        for (Order order : orderList) {
+            if(order.getUserId() == id && order.getStatus() != OrderStatus.FINISH) {
+                return order;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Order> getList(UUID userId) {
+        List<Order> list = new ArrayList<>();
+
+        for (Order order : orderList) {
+            if(order.getUserId() == userId) {
+                list.add(order);
+            }
+        }
+
+        return list;
+    }
 }

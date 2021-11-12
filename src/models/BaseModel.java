@@ -16,7 +16,7 @@ public abstract class BaseModel {
     public BaseModel() {
         this.id = UUID.randomUUID();
     }
-
+//symbol --
     public BaseModel(String name, String username, String password, String phoneNumber, int locX, int locY,char symbol) {
         this.id = UUID.randomUUID();
         this.name = name;
@@ -96,4 +96,6 @@ public abstract class BaseModel {
     public void setLocY(int locY) {
         this.locY = locY;
     }
+
+
 }

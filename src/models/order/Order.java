@@ -88,4 +88,11 @@ public class Order {
     public void setFinalY(int finalY) {
         this.finalY = finalY;
     }
+
+    @Override
+    public String toString() {
+        return  "\nstatus: " + status +
+                "\nfinalX: " + finalX +
+                "\nfinalY: " + finalY;
+    }
 }

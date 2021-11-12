@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.UUID;
 
 public class UserService implements BaseInterface<User>, UserInterface {
-    List<User> userList = new ArrayList<>();
+    private List<User> userList = new ArrayList<>();
+
+    public UserService() {
+        userList.add(new User("root", "root", "root", "", 0, 0, true));
+    }
 
     @Override
     public Responce add(User user) {
@@ -64,12 +68,12 @@ public class UserService implements BaseInterface<User>, UserInterface {
     }
 
     @Override
-    public boolean login(String userName, String password) {
+    public Responce login(String userName, String password) {
         for (User user : userList) {
             if(user.getUsername().equals(userName) && user.getPassword().equals(password)) {
-                return true;
+                return new Responce(true, user);
             }
         }
-        return false;
+        return new Responce(false, null);
     }
 }

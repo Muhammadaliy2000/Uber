@@ -59,4 +59,16 @@ public class Driver extends BaseModel {
         screen.ClearScreenLocation(driver.getLocX(), driver.getLocY() - 1);
     }
 
+    @Override
+    public String toString() {
+        return  " | name='" + name + '\'' +
+                " | username='" + username + '\'' +
+                " | password='" + password + '\'' +
+                " | phoneNumber='" + phoneNumber + '\'' +
+                " | isActive=" + isActive +
+                " | locX=" + locX +
+                " | locY=" + locY +
+                " | carNumber='" + carNumber + '\'' +
+                " | isFree=" + isFree;
+    }
 }

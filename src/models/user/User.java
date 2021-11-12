@@ -6,18 +6,30 @@ import models.visual.GameScreen;
 import java.util.UUID;
 
 public class User extends BaseModel implements Comparable<User>{
+    private boolean isAdmin;
+
     public User() {
         super.id = UUID.randomUUID();
+        this.isAdmin = false;
     }
 
-    public User(String name, String username, String password, String phoneNumber, int locX, int locY) {
+    public User(String name, String username, String password, String phoneNumber, int locX, int locY, boolean isAdmin) {
         super(name, username, password, phoneNumber, locX, locY, 'C');
+        this.isAdmin = isAdmin;
     }
 
     public void addLocation(GameScreen screen, User user){
 //        int x = (int) (Math.random() * (screen.getScreenWidth() - 1));
 //        int y = (int) (Math.random() * (screen.getScreenHeight() - 1));
         screen.setObjectOnLocation(user, user.getLocX(), user.getLocY());
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     @Override

@@ -2,15 +2,17 @@ package service.driver;
 
 import models.driver.Driver;
 import models.order.OrderStatus;
+import models.user.User;
 import service.BaseInterface;
 import service.order.OrderService;
 import models.responce.Responce;
+import service.user.UserInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DriverService implements DriverInterface, BaseInterface<Driver> {
+public class DriverService implements UserInterface, DriverInterface, BaseInterface<Driver> {
     public static final List<Driver> driverList = new ArrayList<>();
 
     @Override
@@ -91,5 +93,31 @@ public class DriverService implements DriverInterface, BaseInterface<Driver> {
         }
 
         return false;
+    }
+
+    @Override
+    public Driver getDriver(UUID driverId) {
+        for (Driver driver : driverList) {
+            if(driver.getId() == driverId) {
+                return driver;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean checkUser(String userName) {
+        return false;
+    }
+
+    @Override
+    public Responce login(String userName, String password) {
+        for (Driver driver : driverList) {
+            if(driver.getUsername().equals(userName) && driver.getPassword().equals(password)) {
+                return new Responce(true, driver);
+            }
+        }
+        return new Responce(false, null);
     }
 }
