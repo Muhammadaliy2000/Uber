@@ -379,7 +379,7 @@ public class Main {
 
                     for (Order order2 : orderl) {
                         Driver driver1 = driverService.getDriver(order2.getDriverId());
-                        System.out.println("id: " + idx++ + driver1 != null ? ("\ndriver name: " + driver1.getName() + "\nphone number: " + driver1.getPhoneNumber() + "\ncar number: " + driver1.getCarNumber()) : "" + order2.toString());
+                        System.out.println("id: " + idx++ +  order2.toString());
                         System.out.println("====================================================");
                     }
 
