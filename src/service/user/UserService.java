@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class UserService implements BaseInterface<User>, UserInterface {
-    private List<User> userList = new ArrayList<>();
+    private static List<User> userList = new ArrayList<>();
 
     public UserService() {
         userList.add(new User("root", "root", "root", "", 0, 0, true));
@@ -47,6 +47,16 @@ public class UserService implements BaseInterface<User>, UserInterface {
     }
 
     @Override
+    public User getOne(UUID id) {
+        for (User user : userList) {
+            if(user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public boolean edit(UUID userId) {
         for (int i = 0; i < userList.size(); i++) {
             if(userList.get(i).getId() == userId && !userList.get(i).isActive()) {
@@ -76,4 +86,6 @@ public class UserService implements BaseInterface<User>, UserInterface {
         }
         return new Responce(false, null);
     }
+
+
 }

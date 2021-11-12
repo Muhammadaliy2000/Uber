@@ -5,11 +5,11 @@ import models.driver.Driver;
 import java.util.UUID;
 
 public interface DriverInterface {
-    boolean accept(Driver driver);
+    boolean accept(UUID id);
 
-    boolean onTheWay(Driver driver);
+    boolean onTheWay(UUID id);
 
-    boolean finish(Driver driver);
+    boolean finish(UUID id);
 
     Driver getDriver(UUID driverId);
 }

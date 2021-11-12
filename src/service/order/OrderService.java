@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class OrderService implements OrderInterface{
-    public static  final List<Order> orderList = new ArrayList<>();
+    public static final List<Order> orderList = new ArrayList<>();
 
     @Override
     public Responce addOrder(Order order) {
@@ -50,7 +50,7 @@ public class OrderService implements OrderInterface{
     @Override
     public Order getOrder(UUID id) {
         for (Order order : orderList) {
-            if(order.getUserId() == id && order.getStatus() != OrderStatus.FINISH) {
+            if(order.getId() == id && order.getStatus() != OrderStatus.FINISH) {
                 return order;
             }
         }
@@ -68,5 +68,15 @@ public class OrderService implements OrderInterface{
         }
 
         return list;
+    }
+
+    @Override
+    public Order getNewOrder(UUID id) {
+        for (Order order : orderList) {
+            if(order.getDriverId() == id && order.getStatus() == OrderStatus.NEW) {
+                return order;
+            }
+        }
+        return null;
     }
 }

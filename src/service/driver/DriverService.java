@@ -49,6 +49,17 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
     }
 
     @Override
+    public Driver getOne(UUID id) {
+        for (Driver driver : driverList) {
+            if(driver.getId() == id) {
+                return driver;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
     public boolean edit(UUID driverId) {
         for (int i = 0; i < driverList.size(); i++) {
             if(driverList.get(i).getId() == driverId && !driverList.get(i).isActive()) {
@@ -60,9 +71,9 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
     }
 
     @Override
-    public boolean accept(Driver driver) {
+    public boolean accept(UUID orderId) {
         for (int i = 0; i < OrderService.orderList.size(); i++) {
-            if(OrderService.orderList.get(i).getDriverId() == driver.getId() && OrderService.orderList.get(i).getStatus() == OrderStatus.NEW) {
+            if(OrderService.orderList.get(i).getId() == orderId && OrderService.orderList.get(i).getStatus() == OrderStatus.NEW) {
                 OrderService.orderList.get(i).setStatus(OrderStatus.ACCEPT);
                 return true;
             }
@@ -72,9 +83,9 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
     }
 
     @Override
-    public boolean onTheWay(Driver driver) {
+    public boolean onTheWay(UUID orderId) {
         for (int i = 0; i < OrderService.orderList.size(); i++) {
-            if(OrderService.orderList.get(i).getDriverId() == driver.getId() && OrderService.orderList.get(i).getStatus() == OrderStatus.ACCEPT) {
+            if(OrderService.orderList.get(i).getId() == orderId && OrderService.orderList.get(i).getStatus() == OrderStatus.ACCEPT) {
                 OrderService.orderList.get(i).setStatus(OrderStatus.ON_THE_WAY);
                 return true;
             }
@@ -84,9 +95,9 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
     }
 
     @Override
-    public boolean finish(Driver driver) {
+    public boolean finish(UUID orderId) {
         for (int i = 0; i < OrderService.orderList.size(); i++) {
-            if(OrderService.orderList.get(i).getDriverId() == driver.getId() && OrderService.orderList.get(i).getStatus() == OrderStatus.ON_THE_WAY) {
+            if(OrderService.orderList.get(i).getId() == orderId && OrderService.orderList.get(i).getStatus() == OrderStatus.ON_THE_WAY) {
                 OrderService.orderList.get(i).setStatus(OrderStatus.FINISH);
                 return true;
             }
@@ -119,5 +130,22 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
             }
         }
         return new Responce(false, null);
+    }
+
+    public Driver getDriver(User user){
+        int x = user.getLocX();
+        int y = user.getLocY();
+        double min = Integer.MAX_VALUE;
+        int index = -1;
+        for (int i = 0; i <driverList.size() ; i++) {
+            if(driverList.get(i).isFree() && min> Math.sqrt(Math.pow((x-driverList.get(i).getLocX()),2) + Math.pow((y*driverList.get(i).getLocY()),2))){
+                min = Math.sqrt(Math.pow((x-driverList.get(i).getLocX()),2) + Math.pow((y*driverList.get(i).getLocY()),2));
+                index = i;
+            }
+        }
+        if (index != -1) {
+            return driverList.get(index);
+        }
+        return null;
     }
 }

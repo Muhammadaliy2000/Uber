@@ -9,5 +9,7 @@ public interface BaseInterface<T> {
     Responce add(T t);
     Responce delete(UUID id);
     List<T> getList();
+    T getOne(UUID id);
     boolean edit(UUID id);
+
 }
