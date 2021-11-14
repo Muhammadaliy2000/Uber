@@ -36,4 +36,16 @@ public class User extends BaseModel implements Comparable<User>{
     public int compareTo(User o) {
         return super.getPassword().compareTo(o.getPassword());
     }
+
+    @Override
+    public String toString() {
+        return  " | name='" + name + '\'' +
+                " | username='" + username + '\'' +
+                " | password='" + password + '\'' +
+                " | phoneNumber='" + phoneNumber + '\'' +
+                " | isActive=" + isActive +
+                " | locX=" + locX +
+                " | locY=" + locY +
+                " | isAdmin=" + isAdmin;
+    }
 }

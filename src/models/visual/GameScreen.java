@@ -4,7 +4,6 @@ import models.BaseModel;
 import models.order.Order;
 
 public class GameScreen {
-
 	private int width, height;
 	private char[][] screenMatrix;
 

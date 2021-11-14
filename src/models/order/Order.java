@@ -13,11 +13,13 @@ public class Order {
     private OrderStatus status;
     private int finalX;
     private int finalY;
+    private boolean isActive;
     private char symbol;
 
     public Order() {
         this.id = UUID.randomUUID();
         this.status = OrderStatus.NEW;
+        this.isActive = true;
         this.symbol = 'F';
     }
 
@@ -28,6 +30,7 @@ public class Order {
         this.status = OrderStatus.NEW;
         this.finalX = finalX;
         this.finalY = finalY;
+        this.isActive = true;
         this.symbol = 'F';
     }
 
@@ -87,6 +90,14 @@ public class Order {
 
     public void setFinalY(int finalY) {
         this.finalY = finalY;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     @Override

@@ -34,7 +34,7 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
     @Override
     public Responce delete(UUID driverId) {
         for (int i = 0; i < driverList.size(); i++) {
-            if(driverList.get(i).getId() == driverId) {
+            if(driverList.get(i).getId() == driverId && driverList.get(i).isActive()) {
                 driverList.get(i).setActive(false);
                 return new Responce(true, driverId);
             }
@@ -135,11 +135,14 @@ public class DriverService implements UserInterface, DriverInterface, BaseInterf
     public Driver getDriver(User user){
         int x = user.getLocX();
         int y = user.getLocY();
-        double min = Integer.MAX_VALUE;
         int index = -1;
+        double min = Integer.MAX_VALUE;
+
         for (int i = 0; i <driverList.size() ; i++) {
-            if(driverList.get(i).isFree() && min> Math.sqrt(Math.pow((x-driverList.get(i).getLocX()),2) + Math.pow((y*driverList.get(i).getLocY()),2))){
-                min = Math.sqrt(Math.pow((x-driverList.get(i).getLocX()),2) + Math.pow((y*driverList.get(i).getLocY()),2));
+            double dist = Math.sqrt(Math.pow((x-driverList.get(i).getLocX()),2) + Math.pow((y*driverList.get(i).getLocY()),2));
+
+            if(driverList.get(i).isFree() && min > dist){
+                min = dist;
                 index = i;
             }
         }

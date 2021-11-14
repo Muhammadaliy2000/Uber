@@ -8,15 +8,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface OrderInterface {
-    Responce addOrder(Order order);
-
     boolean cancelOrder(UUID orderId);
 
-    Responce showOrderProcess(UUID orderId);
-
-    Order getOrder(UUID id);
+    //Responce showOrderProcess(UUID orderId);
 
     List<Order> getList(UUID id);
 
     Order getNewOrder(UUID id);
+
+    Order getOrderByUser(UUID id);
 }
