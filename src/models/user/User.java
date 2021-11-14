@@ -10,6 +10,7 @@ public class User extends BaseModel implements Comparable<User>{
 
     public User() {
         super.id = UUID.randomUUID();
+        super.isActive = true;
         this.isAdmin = false;
     }
 

@@ -125,7 +125,8 @@ public class Main {
         boolean stepcode = true;
 
         while (stepcode) {
-            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Admin************************" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "***************************Admin*****************************" + ConsoleColors.RESET);
+
             System.out.println(ConsoleColors.BLACK_BOLD + "1. Driver section\t2. User section\t3. Order section\t0. Exit" + ConsoleColors.RESET);
 
             switch (scannerInt.nextInt()) {
@@ -151,7 +152,7 @@ public class Main {
             int idx;
             int keyId;
             Responce res;
-            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Driver section************************" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Driver section***********************" + ConsoleColors.RESET);
 
             idx = 1;
             List<Driver> dlist = driverService.getList();
@@ -175,7 +176,7 @@ public class Main {
 
             switch (commandId) {
                 case 1:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Add driver************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Add driver***************************" + ConsoleColors.RESET);
 
                     Driver driver = new Driver();
                     System.out.println("Enter driver name: ");
@@ -231,7 +232,7 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Edit driver************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Edit driver**************************" + ConsoleColors.RESET);
 
                     dlist = driverService.getList();
                     idx = 1;
@@ -266,7 +267,7 @@ public class Main {
     }
 
     public static void userSection(UserService userService, Scanner scannerInt) {
-        System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************User section************************" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************User section*************************" + ConsoleColors.RESET);
 
         List<User> ulist = userService.getList();
         int idx = 1;
@@ -352,7 +353,7 @@ public class Main {
     public static void menuUser(User user, UserService userService, DriverService driverService, OrderService orderService, Scanner scannerInt, Scanner scannerStr) {
         boolean stepcode = true;
         while (stepcode) {
-            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************User************************" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "***************************User******************************" + ConsoleColors.RESET);
 
             Responce res = null;
             Order order = orderService.getOrderByUser(user.getId());
@@ -361,7 +362,7 @@ public class Main {
                 Driver driver = null;
                 if (order.getDriverId() != null) {
                     driver = driverService.getDriver(order.getDriverId());
-                    System.out.println("driver name" + driver.getName() + order.toString());
+                    System.out.println("driver name: " + driver.getName() + "\ndriver car number: " + driver.getCarNumber() + "\ndriver phone number" + driver.getPhoneNumber() + order.toString());
                 } else {
                     System.out.println(order.toString());
                 }
@@ -375,7 +376,7 @@ public class Main {
 
             switch (scannerInt.nextInt()) {
                 case 1:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Order taxi************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "**************************Order taxi*************************" + ConsoleColors.RESET);
 
                     if (order == null) {
                         order = new Order();
@@ -404,8 +405,8 @@ public class Main {
                             order.setDriverId(driver1.getId());
                             order.setStatus(OrderStatus.NEW);
                             res = orderService.add(order);
-                            setOrderS(order);
-                            setDriver(driver1);
+//                            setOrderS(order);
+//                            setDriver(driver1);
 
                             preloading(7);
 
@@ -419,7 +420,7 @@ public class Main {
 
                     break;
                 case 2:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************History************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "***************************History***************************" + ConsoleColors.RESET);
 
                     List<Order> orderl = orderService.getList(user.getId());
                     if (orderl.size() > 0) {
@@ -436,18 +437,19 @@ public class Main {
 
                     break;
                 case 3:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************My profile************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "**************************My profile*************************" + ConsoleColors.RESET);
 
                     System.out.println("name: " + user.getName() + "\nphone number: " + user.getPhoneNumber() + "\nusername: " + user.getUsername() + "\npassword: " + user.getPassword());
                     System.out.println("====================================================");
                     break;
                 case 4:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************My location************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "*************************My location*************************" + ConsoleColors.RESET);
 
                     location(user.getLocY(), user.getLocX(), user);
                     break;
                 case 5:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Order status************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Order status*************************" + ConsoleColors.RESET);
+
                     Order order1 = orderService.getOrderByUser(user.getId());
                     //if (getOrderS() != null) {
                     if(order1 != null) {
@@ -484,13 +486,13 @@ public class Main {
         boolean stepcode = true;
 
         while (stepcode) {
-            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Driver************************" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "****************************Driver***************************" + ConsoleColors.RESET);
 
             System.out.println(ConsoleColors.BLACK_BOLD + "1. Message\t2. History\t3. My profile\t4. My location\t0. Exit" + ConsoleColors.RESET);
 
             switch (scannerInt.nextInt()) {
                 case 1:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************Message************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "***************************Message***************************" + ConsoleColors.RESET);
 
                     Order orderNew = orderService.getNewOrder(driver.getId());
                     if (orderNew != null) {
@@ -517,7 +519,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************History************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "***************************History***************************" + ConsoleColors.RESET);
 
                     List<Order> orderl = orderService.getList(driver.getId());
 
@@ -534,13 +536,13 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************My profile************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "*************************My profile**************************" + ConsoleColors.RESET);
 
                     System.out.println("name: " + driver.getName() + "\nphone number: " + driver.getPhoneNumber() + "\nusername: " + driver.getUsername() + "\npassword: " + driver.getPassword() + "\nstatus: " + driver.isFree());
                     System.out.println("====================================================");
                     break;
                 case 4:
-                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "************************My location************************" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.CYAN_BACKGROUND_BRIGHT + "*************************My location*************************" + ConsoleColors.RESET);
 
                     location(driver.getLocY(), driver.getLocX(), driver);
                     break;
@@ -683,19 +685,19 @@ public class Main {
         }
     }
 
-    public static Order getOrderS() {
-        return orderS;
-    }
-
-    public static void setOrderS(Order orderS) {
-        Main.orderS = orderS;
-    }
-
-    public static Driver getDriver() {
-        return driver;
-    }
-
-    public static void setDriver(Driver driver) {
-        Main.driver = driver;
-    }
+//    public static Order getOrderS() {
+//        return orderS;
+//    }
+//
+//    public static void setOrderS(Order orderS) {
+//        Main.orderS = orderS;
+//    }
+//
+//    public static Driver getDriver() {
+//        return driver;
+//    }
+//
+//    public static void setDriver(Driver driver) {
+//        Main.driver = driver;
+//    }
 }
